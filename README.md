@@ -12,7 +12,7 @@ input bytes.  The ID has a couple of nice properties:
 - The encoding doesn't use characters `0`, `1`, or `8`, which minimizes the
   potential for typos.  Decoding from a string will automatically replace those
   characters with the 'correct' values (`O`, `I`, and `B`).
-- Comparing two IDs using the `Compare` function will use a constant-time
+- Comparing two IDs using the `Equals` function will use a constant-time
   comparison algorithm, to prevent timing attacks.
 
 
