@@ -110,3 +110,11 @@ func TestIDValidity(t *testing.T) {
 		assert.Equal(t, tcase.valid, isValid, "#%d improper validity", i)
 	}
 }
+
+// Test comparison functions
+func TestComparison(t *testing.T) {
+	id := NewFromString("foobar")
+
+	assert.True(t, id.Equals(id))
+	assert.Equal(t, 0, id.Compare(id))
+}

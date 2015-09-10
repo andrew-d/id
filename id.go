@@ -1,6 +1,7 @@
 package id
 
 import (
+	"bytes"
 	"crypto/sha256"
 	"crypto/subtle"
 	"encoding/base32"
@@ -67,16 +68,17 @@ func (i ID) GoString() string {
 	return i.String()
 }
 
-// Compares the two given IDs.  This function uses a constant-time comparison
-// algorithm to prevent timing attacks.
+// Compares the two given IDs.  Note that this function is NOT SAFE AGAINST
+// TIMING ATTACKS.  If you are simply checking for equality, please use the
+// Equals function, which is.
 func (i ID) Compare(other ID) int {
-	return subtle.ConstantTimeCompare(i[:], other[:])
+	return bytes.Compare(i[:], other[:])
 }
 
 // Checks the two given IDs for equality.  This function uses a constant-time
 // comparison algorithm to prevent timing attacks.
 func (i ID) Equals(other ID) bool {
-	return subtle.ConstantTimeCompare(i[:], other[:]) == 0
+	return subtle.ConstantTimeCompare(i[:], other[:]) == 1
 }
 
 // Implements the `TextMarshaler` interface from the encoding package.
