@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/calmh/luhn"
+	"github.com/andrew-d/id/internal/luhn"
 )
 
 // ID is the type representing a generated ID.
